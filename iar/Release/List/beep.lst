@@ -1,0 +1,559 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V3.10.1.201 for STM8                 04/Jan/2020  19:03:24
+# Copyright 2010-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+#
+#    Source file  =  F:\项目存档\2020-01-04 雪花灯STM8\iar\beep.c
+#    Command line =  
+#        -f C:\Users\38263\AppData\Local\Temp\EW38B3.tmp
+#        ("F:\项目存档\2020-01-04 雪花灯STM8\iar\beep.c" -e -Oh --code_model
+#        small --data_model medium -o "F:\项目存档\2020-01-04
+#        雪花灯STM8\iar\Release\Obj" --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h" -D NDEBUG -lC
+#        "F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List" -lA
+#        "F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List" --vregs 16)
+#    Locale       =  Chinese (Simplified)_CHN.936
+#    List file    =  
+#        F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List\beep.lst
+#    Object file  =  F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\Obj\beep.o
+#
+###############################################################################
+
+F:\项目存档\2020-01-04 雪花灯STM8\iar\beep.c
+      1          #include "beep.h"
+
+   \                                 In section .near.noinit, at 0x500f
+   \   union <unnamed> volatile _A_PD_ODR
+   \                     _A_PD_ODR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5300
+   \   union <unnamed> volatile _A_TIM2_CR1
+   \                     _A_TIM2_CR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5307
+   \   union <unnamed> volatile _A_TIM2_CCMR1
+   \                     _A_TIM2_CCMR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x530a
+   \   union <unnamed> volatile _A_TIM2_CCER1
+   \                     _A_TIM2_CCER1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x530e
+   \   union <unnamed> volatile _A_TIM2_PSCR
+   \                     _A_TIM2_PSCR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x530f
+   \   unsigned char volatile TIM2_ARRH
+   \                     TIM2_ARRH:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5310
+   \   unsigned char volatile TIM2_ARRL
+   \                     TIM2_ARRL:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5311
+   \   unsigned char volatile TIM2_CCR1H
+   \                     TIM2_CCR1H:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5312
+   \   unsigned char volatile TIM2_CCR1L
+   \                     TIM2_CCR1L:
+   \   000000              DS8 1
+      2          
+
+   \                                 In section .near.bss, align 1
+      3          unsigned int musicNum = 0;
+   \                     musicNum:
+   \   000000              DS8 2
+
+   \                                 In section .near.bss, align 1
+      4          unsigned char musicTime = 0;
+   \                     musicTime:
+   \   000000              DS8 1
+
+   \                                 In section .near.bss, align 1
+      5          unsigned char playStatus = 0;
+   \                     playStatus:
+   \   000000              DS8 1
+
+   \                                 In section .near.bss, align 1
+      6          const unsigned int * music = 0;
+   \                     music:
+   \   000000              DS8 2
+      7          
+
+   \                                 In section .near.rodata, align 1
+      8          const unsigned int demo_music[] = {
+   \                     demo_music:
+   \   000000 0188 0014    DC16 392, 20, 392, 20, 440, 40, 392, 40, 523, 40, 494, 80, 392, 20, 392
+   \          0188 0014   
+   \   00001E 0014 01B8    DC16 20, 440, 40, 392, 40, 587, 40, 523, 80, 392, 20, 392, 20, 784, 40
+   \          0028 0188   
+   \   00003C 0293 0028    DC16 659, 40, 523, 40, 494, 40, 440, 40, 698, 3, 698, 1, 659, 40, 523
+   \          020B 0028   
+   \   00005A 0028 024B    DC16 40, 587, 40, 523, 40, 10000, 80, 0
+   \          0028 020B   
+      9            L5,20,L5,20,L6,40,L5,40,M1,40,L7,80,
+     10            L5,20,L5,20,L6,40,L5,40,M2,40,M1,80,
+     11            L5,20,L5,20,M5,40,M3,40,M1,40,L7,40,L6,40,
+     12            M4,3,M4,1,M3,40,M1,40,M2,40,M1,40,
+     13            10000,80,0x00,	
+     14          };
+     15          
+
+   \                                 In section .near.rodata, align 1
+     16          const unsigned int bad_apple[] ={
+   \                     bad_apple:
+   \   000000 01B8 0014    DC16 440, 20, 494, 20, 523, 20, 587, 20, 659, 40, 880, 20, 784, 20, 659
+   \          01EE 0014   
+   \   00001E 0028 01B8    DC16 40, 440, 40, 659, 20, 587, 20, 523, 20, 494, 20, 440, 20, 494, 20
+   \          0028 0293   
+   \   00003C 020B 0014    DC16 523, 20, 587, 20, 659, 40, 587, 20, 523, 20, 494, 20, 440, 20, 494
+   \          024B 0014   
+   \   00005A 0014 020B    DC16 20, 523, 20, 494, 20, 440, 20, 392, 20, 494, 20, 440, 20, 494, 20
+   \          0014 01EE   
+   \   000078 020B 0014    DC16 523, 20, 587, 20, 659, 40, 880, 20, 784, 20, 659, 40, 440, 40, 659
+   \          024B 0014   
+   \   000096 0014 024B    DC16 20, 587, 20, 523, 20, 494, 20, 440, 20, 494, 20, 523, 20, 587, 20
+   \          0014 020B   
+   \   0000B4 0293 0028    DC16 659, 40, 587, 20, 523, 20, 494, 20, 523, 20, 523, 20, 587, 20, 587
+   \          024B 0014   
+   \   0000D2 0014 0293    DC16 20, 659, 20, 659, 20, 440, 20, 494, 20, 523, 20, 587, 20, 659, 40
+   \          0014 0293   
+   \   0000F0 0370 0014    DC16 880, 20, 784, 20, 659, 40, 440, 40, 659, 20, 587, 20, 523, 20, 494
+   \          0310 0014   
+   \   00010E 0014 01B8    DC16 20, 440, 20, 494, 20, 523, 20, 587, 20, 659, 40, 587, 20, 523, 20
+   \          0014 01EE   
+   \   00012C 01EE 0014    DC16 494, 20, 440, 20, 494, 20, 523, 20, 494, 20, 440, 20, 392, 20, 494
+   \          01B8 0014   
+   \   00014A 0014 01B8    DC16 20, 440, 20, 494, 20, 523, 20, 587, 20, 659, 40, 880, 20, 784, 20
+   \          0014 01EE   
+   \   000168 0293 0028    DC16 659, 40, 440, 40, 659, 20, 587, 20, 523, 20, 494, 20, 440, 20, 494
+   \          01B8 0028   
+   \   000186 0014 020B    DC16 20, 523, 20, 587, 20, 659, 40, 587, 20, 523, 20, 494, 20, 523, 20
+   \          0014 024B   
+   \   0001A4 020B 0014    DC16 523, 20, 587, 20, 587, 20, 659, 20, 659, 20, 784, 20, 880, 20, 659
+   \          024B 0014   
+   \   0001C2 0014 024B    DC16 20, 587, 20, 659, 40, 587, 20, 659, 20, 784, 20, 880, 20, 659, 20
+   \          0014 0293   
+   \   0001E0 024B 0014    DC16 587, 20, 659, 40, 587, 20, 659, 20, 587, 20, 523, 20, 494, 20, 392
+   \          0293 0028   
+   \   0001FE 0014 01B8    DC16 20, 440, 40, 392, 20, 440, 20, 494, 20, 523, 20, 587, 20, 659, 20
+   \          0028 0188   
+   \   00021C 01B8 0028    DC16 440, 40, 659, 20, 784, 20, 784, 20, 880, 20, 659, 20, 587, 20, 659
+   \          0293 0014   
+   \   00023A 0028 024B    DC16 40, 587, 20, 659, 20, 784, 20, 880, 20, 659, 20, 587, 20, 659, 40
+   \          0014 0293   
+   \   000258 024B 0014    DC16 587, 20, 659, 20, 587, 20, 523, 20, 494, 20, 392, 20, 440, 40, 392
+   \          0293 0014   
+   \   000276 0014 01B8    DC16 20, 440, 20, 494, 20, 523, 20, 587, 20, 659, 20, 440, 40, 659, 20
+   \          0014 01EE   
+   \   000294 0310 0014    DC16 784, 20, 784, 20, 880, 20, 659, 20, 587, 20, 659, 40, 587, 20, 659
+   \          0310 0014   
+   \   0002B2 0014 0310    DC16 20, 784, 20, 880, 20, 659, 20, 587, 20, 659, 40, 587, 20, 659, 20
+   \          0014 0370   
+   \   0002D0 024B 0014    DC16 587, 20, 523, 20, 494, 20, 392, 20, 440, 40, 392, 20, 440, 20, 494
+   \          020B 0014   
+   \   0002EE 0014 020B    DC16 20, 523, 20, 587, 20, 659, 20, 440, 40, 659, 20, 784, 20, 784, 20
+   \          0014 024B   
+   \   00030C 0370 0014    DC16 880, 20, 659, 20, 587, 20, 659, 40, 587, 20, 659, 20, 784, 20, 880
+   \          0293 0014   
+   \   00032A 0014 0293    DC16 20, 659, 20, 587, 20, 659, 40, 880, 20, 988, 20, 1046, 20, 988, 20
+   \          0014 024B   
+   \   000348 0370 0014    DC16 880, 20, 784, 20, 659, 40, 587, 20, 659, 20, 587, 20, 523, 20, 494
+   \          0310 0014   
+   \   000366 0014 0188    DC16 20, 392, 20, 440, 40, 659, 20, 784, 20, 784, 20, 880, 20, 659, 20
+   \          0014 01B8   
+   \   000384 024B 0014    DC16 587, 20, 659, 40, 587, 20, 659, 20, 784, 20, 880, 20, 659, 20, 587
+   \          0293 0028   
+   \   0003A2 0014 0293    DC16 20, 659, 40, 587, 20, 659, 20, 587, 20, 523, 20, 494, 20, 392, 20
+   \          0028 024B   
+   \   0003C0 01B8 0028    DC16 440, 40, 392, 20, 440, 20, 494, 20, 523, 20, 587, 20, 659, 20, 440
+   \          0188 0014   
+   \   0003DE 0028 0293    DC16 40, 659, 20, 784, 20, 784, 20, 880, 20, 659, 20, 587, 20, 659, 40
+   \          0014 0310   
+   \   0003FC 024B 0014    DC16 587, 20, 659, 20, 784, 20, 880, 20, 659, 20, 587, 20, 659, 40, 587
+   \          0293 0014   
+   \   00041A 0014 0293    DC16 20, 659, 20, 587, 20, 523, 20, 494, 20, 392, 20, 440, 40, 392, 20
+   \          0014 024B   
+   \   000438 01B8 0014    DC16 440, 20, 494, 20, 523, 20, 587, 20, 659, 20, 440, 40, 659, 20, 784
+   \          01EE 0014   
+   \   000456 0014 0310    DC16 20, 784, 20, 880, 20, 659, 20, 587, 20, 659, 40, 587, 20, 659, 20
+   \          0014 0370   
+   \   000474 0310 0014    DC16 784, 20, 880, 20, 659, 20, 587, 20, 659, 40, 587, 20, 659, 20, 587
+   \          0370 0014   
+   \   000492 0014 020B    DC16 20, 523, 20, 494, 20, 392, 20, 440, 40, 392, 20, 440, 20, 494, 20
+   \          0014 01EE   
+   \   0004B0 020B 0014    DC16 523, 20, 587, 20, 659, 20, 440, 40, 659, 20, 784, 20, 784, 20, 880
+   \          024B 0014   
+   \   0004CE 0014 0293    DC16 20, 659, 20, 587, 20, 659, 40, 587, 20, 659, 20, 784, 20, 880, 20
+   \          0014 024B   
+   \   0004EC 0293 0014    DC16 659, 20, 587, 20, 659, 40, 880, 20, 988, 20, 1046, 20, 988, 20
+   \          024B 0014   
+   \   000508 0370 0014    DC16 880, 20, 784, 20, 659, 40, 587, 20, 659, 20, 587, 20, 523, 20, 494
+   \          0310 0014   
+   \   000526 0014 0188    DC16 20, 392, 20, 440, 40, 10000, 80, 0
+   \          0014 01B8   
+     17            L6,20,L7,20,M1,20,M2,20,M3,40,M6,20,M5,20,
+     18            M3,40,L6,40,M3,20,M2,20,M1,20,L7,20,
+     19            L6,20,L7,20,M1,20,M2,20,M3,40,M2,20,M1,20,
+     20            L7,20,L6,20,L7,20,M1,20,L7,20,L6,20,L5,20,L7,20,
+     21            
+     22            L6,20,L7,20,M1,20,M2,20,M3,40,M6,20,M5,20,
+     23            M3,40,L6,40,M3,20,M2,20,M1,20,L7,20,
+     24            L6,20,L7,20,M1,20,M2,20,M3,40,M2,20,M1,20,
+     25            L7,20,M1,20,M1,20,M2,20,M2,20,M3,20,M3,20,
+     26            
+     27            L6,20,L7,20,M1,20,M2,20,M3,40,M6,20,M5,20,  //反复一次
+     28            M3,40,L6,40,M3,20,M2,20,M1,20,L7,20,
+     29            L6,20,L7,20,M1,20,M2,20,M3,40,M2,20,M1,20,
+     30            L7,20,L6,20,L7,20,M1,20,L7,20,L6,20,L5,20,L7,20,
+     31            
+     32            L6,20,L7,20,M1,20,M2,20,M3,40,M6,20,M5,20,
+     33            M3,40,L6,40,M3,20,M2,20,M1,20,L7,20,
+     34            L6,20,L7,20,M1,20,M2,20,M3,40,M2,20,M1,20,
+     35            L7,20,M1,20,M1,20,M2,20,M2,20,M3,20,M3,20,
+     36            
+     37            
+     38            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     39            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     40            M2,20,M1,20,L7,20,L5,20,L6,40,L5,20,L6,20,
+     41            L7,20,M1,20,M2,20,M3,20,L6,40,M3,20,M5,20,
+     42            
+     43            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     44            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     45            M2,20,M1,20,L7,20,L5,20,L6,40,L5,20,L6,20,
+     46            L7,20,M1,20,M2,20,M3,20,L6,40,M3,20,M5,20,
+     47            
+     48            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     49            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     50            M2,20,M1,20,L7,20,L5,20,L6,40,L5,20,L6,20,
+     51            L7,20,M1,20,M2,20,M3,20,L6,40,M3,20,M5,20,
+     52            
+     53            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     54            M5,20,M6,20,M3,20,M2,20,M3,40,M6,20,M7,20,
+     55            H1,20,M7,20,M6,20,M5,20,M3,40,M2,20,M3,20,
+     56            M2,20,M1,20,L7,20,L5,20,L6,40,M3,20,M5,20,
+     57            
+     58            
+     59            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,   //反复一次
+     60            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     61            M2,20,M1,20,L7,20,L5,20,L6,40,L5,20,L6,20,
+     62            L7,20,M1,20,M2,20,M3,20,L6,40,M3,20,M5,20,
+     63            
+     64            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     65            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     66            M2,20,M1,20,L7,20,L5,20,L6,40,L5,20,L6,20,
+     67            L7,20,M1,20,M2,20,M3,20,L6,40,M3,20,M5,20,
+     68            
+     69            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     70            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     71            M2,20,M1,20,L7,20,L5,20,L6,40,L5,20,L6,20,
+     72            L7,20,M1,20,M2,20,M3,20,L6,40,M3,20,M5,20,
+     73            
+     74            M5,20,M6,20,M3,20,M2,20,M3,40,M2,20,M3,20,
+     75            M5,20,M6,20,M3,20,M2,20,M3,40,M6,20,M7,20,
+     76            H1,20,M7,20,M6,20,M5,20,M3,40,M2,20,M3,20,
+     77            M2,20,M1,20,L7,20,L5,20,L6,40,/*M3,20,M5,20,*/
+     78            /*
+     79            L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,
+     80            L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,
+     81            L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,
+     82            L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,L6,19,10000,1,
+     83            */
+     84            
+     85            M_STOP,80,0x00,	
+     86          };
+     87          
+
+   \                                 In section .near.rodata, align 1
+     88          const unsigned int senbonzakura[] = {
+   \                     senbonzakura:
+   \   000000 01B8 000A    DC16 440, 10, 440, 10, 392, 10, 440, 10, 440, 10, 392, 10, 440, 10, 440
+   \          01B8 000A   
+   \   00001E 000A 0188    DC16 10, 392, 10, 440, 10, 262, 20, 10000, 80, 0
+   \          000A 01B8   
+     89            L6,10,L6,10,L5,10,L6,10,L6,10,L5,10,
+     90            L6,10,L6,10,L5,10,L6,10,L1,20,
+     91            
+     92            M_STOP,80,0x00,
+     93          };
+     94          
+
+   \                                 In section .near_func.text, align 1
+     95          void beep_set(int freq){
+   \                     beep_set:
+   \   000000 CD ....      CALL      L:?push_w4
+   \   000003 BF ..        LDW       S:?w4, X
+     96            unsigned int tim_data;
+     97            
+     98            tim_data = 8000000L / freq;
+   \   000005 CD ....      CALL      L:?sext32_l0_x
+   \   000008 CD ....      CALL      L:?mov_l1_l0
+   \   00000B CD ....      CALL      L:?sdiv32_l0_dl_l1
+   \   00000E 007A1200     DC32      0x7a1200
+   \   000012 BE ..        LDW       X, S:?w1
+     99            TIM2_ARRH  = tim_data>>8;
+   \   000014 9E           LD        A, XH
+   \   000015 C7 530F      LD        L:0x530f, A
+    100            TIM2_ARRL  = tim_data;
+   \   000018 9F           LD        A, XL
+   \   000019 C7 5310      LD        L:0x5310, A
+    101            tim_data = tim_data / 2;
+   \   00001C 54           SRLW      X
+    102            TIM2_CCR1H = tim_data>>8;
+   \   00001D 9E           LD        A, XH
+   \   00001E C7 5311      LD        L:0x5311, A
+    103            TIM2_CCR1L = tim_data;
+   \   000021 9F           LD        A, XL
+   \   000022 C7 5312      LD        L:0x5312, A
+    104            
+    105            TIM2_CR1 = 0x01; //计数器使能，开始计数
+   \   000025 35 01 5300   MOV       L:0x5300, #0x1
+    106            if(freq == M_STOP){
+   \   000029 BE ..        LDW       X, S:?w4
+   \   00002B A3 2710      CPW       X, #0x2710
+   \   00002E 26 08        JRNE      L:??beep_set_0
+    107              TIM2_CR1 = 0x00; 
+   \   000030 725F 5300    CLR       L:0x5300
+    108              PD_ODR_ODR4 = 0;
+   \   000034 7219 500F    BRES      L:0x500f, #0x4
+    109            }
+    110            
+    111            return;
+   \                     ??beep_set_0:
+   \   000038 CC ....      JP        L:?epilogue_w4
+   \   00003B              REQUIRE TIM2_ARRH
+   \   00003B              REQUIRE TIM2_ARRL
+   \   00003B              REQUIRE TIM2_CCR1H
+   \   00003B              REQUIRE TIM2_CCR1L
+   \   00003B              REQUIRE _A_TIM2_CR1
+   \   00003B              REQUIRE _A_PD_ODR
+    112          }
+    113          
+
+   \                                 In section .near_func.text, align 1
+    114          void beep_init(){
+    115            TIM2_PSCR_PSC = 1;          //8MHZ
+   \                     beep_init:
+   \   000000 CD ....      CALL      L:?Subroutine0
+    116            TIM2_CCMR1 = 0X70;
+    117            TIM2_CCER1 = 0X01;
+    118            
+    119            music = demo_music;
+   \                     ??CrossCallReturnLabel_0:
+   \   000003 AE ....      LDW       X, #demo_music
+   \   000006 CF ....      LDW       L:music, X
+    120          }
+   \   000009 81           RET
+   \   00000A              REQUIRE _A_TIM2_PSCR
+   \   00000A              REQUIRE _A_TIM2_CCMR1
+   \   00000A              REQUIRE _A_TIM2_CCER1
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine0:
+   \   000000 C6 530E      LD        A, L:0x530e
+   \   000003 A4 F0        AND       A, #0xf0
+   \   000005 AA 01        OR        A, #0x1
+   \   000007 C7 530E      LD        L:0x530e, A
+   \   00000A 35 70 5307   MOV       L:0x5307, #0x70
+   \   00000E 35 01 530A   MOV       L:0x530a, #0x1
+   \   000012 81           RET
+    121          
+
+   \                                 In section .near_func.text, align 1
+    122          void beep_update(){
+    123            if(playStatus == 1){
+   \                     beep_update:
+   \   000000 C6 ....      LD        A, L:playStatus
+   \   000003 4A           DEC       A
+   \   000004 26 33        JRNE      L:??beep_update_0
+    124              if(musicTime == 0){
+   \   000006 C6 ....      LD        A, L:musicTime
+   \   000009 26 2A        JRNE      L:??beep_update_1
+    125                if(music[musicNum]== 0){
+   \   00000B CD ....      CALL      L:?Subroutine2
+   \                     ??CrossCallReturnLabel_4:
+   \   00000E 26 04        JRNE      L:??beep_update_2
+    126                  musicNum = 0;
+   \   000010 5F           CLRW      X
+   \   000011 CF ....      LDW       L:musicNum, X
+    127                }
+    128                beep_set(music[musicNum++]);
+   \                     ??beep_update_2:
+   \   000014 CE ....      LDW       X, L:musicNum
+   \   000017 9093         LDW       Y, X
+   \   000019 5C           INCW      X
+   \   00001A CF ....      LDW       L:musicNum, X
+   \   00001D 93           LDW       X, Y
+   \   00001E 58           SLLW      X
+   \   00001F 72BB ....    ADDW      X, L:music
+   \   000023 FE           LDW       X, (X)
+   \   000024 CD ....      CALL      L:beep_set
+    129                musicTime = music[musicNum++];
+   \   000027 CD ....      CALL      L:?Subroutine2
+    130              }
+   \                     ??CrossCallReturnLabel_5:
+   \   00002A 9F           LD        A, XL
+   \   00002B C7 ....      LD        L:musicTime, A
+   \   00002E CE ....      LDW       X, L:musicNum
+   \   000031 5C           INCW      X
+   \   000032 CF ....      LDW       L:musicNum, X
+    131              musicTime--;
+   \                     ??beep_update_1:
+   \   000035 725A ....    DEC       L:musicTime
+    132            }
+    133          }
+   \                     ??beep_update_0:
+   \   000039 81           RET
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine2:
+   \   000000 CE ....      LDW       X, L:musicNum
+   \   000003 58           SLLW      X
+   \   000004 72BB ....    ADDW      X, L:music
+   \   000008 FE           LDW       X, (X)
+   \   000009 81           RET
+    134          
+
+   \                                 In section .near_func.text, align 1
+    135          void beep_start(const unsigned int * music_name){
+    136            music = music_name;
+   \                     beep_start:
+   \   000000 CD ....      CALL      L:?Subroutine1
+    137            musicTime = 0;
+    138            musicNum = 0;
+    139            playStatus = 1;
+    140          }
+   \                     ??CrossCallReturnLabel_2:
+   \   000003 81           RET
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine1:
+   \   000000 CF ....      LDW       L:music, X
+   \   000003 CD ....      CALL      L:?Subroutine4
+   \                     ??CrossCallReturnLabel_9:
+   \   000006 35 01 ....   MOV       L:playStatus, #0x1
+   \   00000A 81           RET
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine4:
+   \   000000 725F ....    CLR       L:musicTime
+   \   000004 5F           CLRW      X
+   \   000005 CF ....      LDW       L:musicNum, X
+   \   000008 81           RET
+
+   \                                 In section .near_func.text, align 1
+    141          void MusicPause(){
+    142            TIM2_CR1 = 0x00; 
+   \                     MusicPause:
+   \   000000 CD ....      CALL      L:?Subroutine3
+    143            playStatus = 0;
+    144          }
+   \                     ??CrossCallReturnLabel_6:
+   \   000003 81           RET
+   \   000004              REQUIRE _A_TIM2_CR1
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine3:
+   \   000000 725F 5300    CLR       L:0x5300
+   \   000004 725F ....    CLR       L:playStatus
+   \   000008 81           RET
+
+   \                                 In section .near_func.text, align 1
+    145          void MusicPlay(){
+    146            TIM2_CR1 = 0x01; 
+   \                     MusicPlay:
+   \   000000 35 01 5300   MOV       L:0x5300, #0x1
+    147            playStatus = 1;
+   \   000004 35 01 ....   MOV       L:playStatus, #0x1
+    148          }
+   \   000008 81           RET
+   \   000009              REQUIRE _A_TIM2_CR1
+
+   \                                 In section .near_func.text, align 1
+    149          void MusicStop(){
+    150            musicTime = 0;
+   \                     MusicStop:
+   \   000000 CD ....      CALL      L:?Subroutine4
+    151            musicNum = 0;
+    152            TIM2_CR1 = 0x00; 
+   \                     ??CrossCallReturnLabel_8:
+   \   000003 CD ....      CALL      L:?Subroutine3
+    153            playStatus = 0;
+    154          }
+   \                     ??CrossCallReturnLabel_7:
+   \   000006 81           RET
+   \   000007              REQUIRE _A_TIM2_CR1
+    155          
+
+   \                                 In section .near_func.text, align 1
+    156          void beep_demo(){
+    157            beep_init();
+   \                     beep_demo:
+   \   000000 CD ....      CALL      L:?Subroutine0
+    158            beep_start(senbonzakura);
+   \                     ??CrossCallReturnLabel_1:
+   \   000003 AE ....      LDW       X, #senbonzakura
+   \   000006 CD ....      CALL      L:?Subroutine1
+    159          }
+   \                     ??CrossCallReturnLabel_3:
+   \   000009 81           RET
+   \   00000A              REQUIRE _A_TIM2_PSCR
+   \   00000A              REQUIRE _A_TIM2_CCMR1
+   \   00000A              REQUIRE _A_TIM2_CCER1
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      19  ?Subroutine0
+      11  ?Subroutine1
+      10  ?Subroutine2
+       9  ?Subroutine3
+       9  ?Subroutine4
+       4  MusicPause
+       9  MusicPlay
+       7  MusicStop
+       1  TIM2_ARRH
+       1  TIM2_ARRL
+       1  TIM2_CCR1H
+       1  TIM2_CCR1L
+       1  _A_PD_ODR
+       1  _A_TIM2_CCER1
+       1  _A_TIM2_CCMR1
+       1  _A_TIM2_CR1
+       1  _A_TIM2_PSCR
+    1334  bad_apple
+      10  beep_demo
+      10  beep_init
+      59  beep_set
+       4  beep_start
+      58  beep_update
+     106  demo_music
+       2  music
+       2  musicNum
+       1  musicTime
+       1  playStatus
+      50  senbonzakura
+
+ 
+     6 bytes in section .near.bss
+     9 bytes in section .near.noinit    (abs)
+ 1 490 bytes in section .near.rodata
+   219 bytes in section .near_func.text
+ 
+   219 bytes of CODE  memory
+ 1 490 bytes of CONST memory
+     6 bytes of DATA  memory (+ 9 bytes shared)
+
+Errors: none
+Warnings: none

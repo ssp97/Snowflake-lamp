@@ -1,0 +1,351 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V3.10.1.201 for STM8                 04/Jan/2020  13:49:31
+# Copyright 2010-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+#
+#    Source file  =  F:\项目存档\2020-01-04 雪花灯STM8\iar\ws2812.c
+#    Command line =  
+#        -f C:\Users\38263\AppData\Local\Temp\EWD877.tmp
+#        ("F:\项目存档\2020-01-04 雪花灯STM8\iar\ws2812.c" -e -Oh --code_model
+#        small --data_model medium -o "F:\项目存档\2020-01-04
+#        雪花灯STM8\iar\Release\Obj" --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h" -D NDEBUG -lC
+#        "F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List" -lA
+#        "F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List" --vregs 16)
+#    Locale       =  Chinese (Simplified)_CHN.936
+#    List file    =  
+#        F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List\ws2812.lst
+#    Object file  =  F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\Obj\ws2812.o
+#
+###############################################################################
+
+F:\项目存档\2020-01-04 雪花灯STM8\iar\ws2812.c
+      1          #include "ws2812.h"
+
+   \                                 In section .near.noinit, at 0x5000
+   \   union <unnamed> volatile _A_PA_ODR
+   \                     _A_PA_ODR:
+   \   000000              DS8 1
+      2          
+      3          
+
+   \                                 In section .near_func.text, align 1
+      4          void ws2812_write_1(){
+      5            ws2812_input = 1;
+   \                     ws2812_write_1:
+   \   000000 7216 5000    BSET      L:0x5000, #0x3
+      6            asm("nop");asm("nop");asm("nop");asm("nop");asm("nop");
+   \   000004 9D           nop
+   \   000005 9D           nop
+   \   000006 9D           nop
+   \   000007 9D           nop
+   \   000008 9D           nop
+      7            asm("nop");asm("nop");asm("nop");asm("nop");asm("nop");
+   \   000009 9D           nop
+   \   00000A 9D           nop
+   \   00000B 9D           nop
+   \   00000C 9D           nop
+   \   00000D 9D           nop
+      8            asm("nop");asm("nop");
+   \   00000E 9D           nop
+   \   00000F 9D           nop
+      9            ws2812_input = 0;
+   \   000010 7217 5000    BRES      L:0x5000, #0x3
+     10            asm("nop");asm("nop");asm("nop");asm("nop");asm("nop");
+   \   000014 9D           nop
+   \   000015 9D           nop
+   \   000016 9D           nop
+   \   000017 9D           nop
+   \   000018 9D           nop
+     11            asm("nop");
+   \   000019 9D           nop
+     12            return;
+   \   00001A 81           RET
+   \   00001B              REQUIRE _A_PA_ODR
+     13          }
+
+   \                                 In section .near_func.text, align 1
+     14          void ws2812_write_0(){
+     15            ws2812_input = 1;
+   \                     ws2812_write_0:
+   \   000000 7216 5000    BSET      L:0x5000, #0x3
+     16            asm("nop");asm("nop");asm("nop");asm("nop");asm("nop");
+   \   000004 9D           nop
+   \   000005 9D           nop
+   \   000006 9D           nop
+   \   000007 9D           nop
+   \   000008 9D           nop
+     17            asm("nop");
+   \   000009 9D           nop
+     18            ws2812_input = 0;
+   \   00000A 7217 5000    BRES      L:0x5000, #0x3
+     19            asm("nop");asm("nop");asm("nop");asm("nop");asm("nop");
+   \   00000E 9D           nop
+   \   00000F 9D           nop
+   \   000010 9D           nop
+   \   000011 9D           nop
+   \   000012 9D           nop
+     20            asm("nop");asm("nop");asm("nop");asm("nop");asm("nop");
+   \   000013 9D           nop
+   \   000014 9D           nop
+   \   000015 9D           nop
+   \   000016 9D           nop
+   \   000017 9D           nop
+     21            asm("nop");asm("nop");
+   \   000018 9D           nop
+   \   000019 9D           nop
+     22            return;
+   \   00001A 81           RET
+   \   00001B              REQUIRE _A_PA_ODR
+     23          }
+     24          
+
+   \                                 In section .near_func.text, align 1
+     25          void ws2812_send_8bit(char color){ //only 16MHZ
+   \                     ws2812_send_8bit:
+   \   000000 CD ....      CALL      L:?Subroutine1
+     26            for(char i=0;i<8;i++){
+     27              if(color&0x80)
+   \                     ??CrossCallReturnLabel_4:
+   \   000003 B6 ..        LD        A, S:?b1
+   \   000005 A5 80        BCP       A, #0x80
+   \   000007 27 05        JREQ      L:??ws2812_send_8bit_0
+     28                ws2812_write_1();
+   \   000009 CD ....      CALL      L:ws2812_write_1
+   \   00000C 20 03        JRA       L:??ws2812_send_8bit_1
+     29              else
+     30                ws2812_write_0();
+   \                     ??ws2812_send_8bit_0:
+   \   00000E CD ....      CALL      L:ws2812_write_0
+     31              color = color << 1;
+   \                     ??ws2812_send_8bit_1:
+   \   000011 CD ....      CALL      L:?Subroutine0
+     32            }
+   \                     ??CrossCallReturnLabel_0:
+   \   000014 26 ED        JRNE      L:??CrossCallReturnLabel_4
+     33          }
+   \   000016 81           RET
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine1:
+   \   000000 B7 ..        LD        S:?b1, A
+   \   000002 35 08 ....   MOV       S:?b0, #0x8
+   \   000006 81           RET
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine0:
+   \   000000 B6 ..        LD        A, S:?b1
+   \   000002 48           SLL       A
+   \   000003 B7 ..        LD        S:?b1, A
+   \   000005 3A ..        DEC       S:?b0
+   \   000007 81           RET
+     34          
+
+   \                                 In section .near_func.text, align 1
+     35          void ws2812_send_rgb(rgb888 led){
+     36            ws2812_send_8bit(led.g);
+   \                     ws2812_send_rgb:
+   \   000000 7B 03        LD        A, (0x3,SP)
+   \   000002 CD ....      CALL      L:?Subroutine1
+   \                     ??CrossCallReturnLabel_5:
+   \   000005 B6 ..        LD        A, S:?b1
+   \   000007 A5 80        BCP       A, #0x80
+   \   000009 27 05        JREQ      L:??ws2812_send_rgb_0
+   \   00000B CD ....      CALL      L:ws2812_write_1
+   \   00000E 20 03        JRA       L:??ws2812_send_rgb_1
+   \                     ??ws2812_send_rgb_0:
+   \   000010 CD ....      CALL      L:ws2812_write_0
+   \                     ??ws2812_send_rgb_1:
+   \   000013 CD ....      CALL      L:?Subroutine0
+   \                     ??CrossCallReturnLabel_1:
+   \   000016 26 ED        JRNE      L:??CrossCallReturnLabel_5
+     37            ws2812_send_8bit(led.r);
+   \   000018 7B 04        LD        A, (0x4,SP)
+   \   00001A CD ....      CALL      L:?Subroutine1
+   \                     ??CrossCallReturnLabel_6:
+   \   00001D B6 ..        LD        A, S:?b1
+   \   00001F A5 80        BCP       A, #0x80
+   \   000021 27 05        JREQ      L:??ws2812_send_rgb_2
+   \   000023 CD ....      CALL      L:ws2812_write_1
+   \   000026 20 03        JRA       L:??ws2812_send_rgb_3
+   \                     ??ws2812_send_rgb_2:
+   \   000028 CD ....      CALL      L:ws2812_write_0
+   \                     ??ws2812_send_rgb_3:
+   \   00002B CD ....      CALL      L:?Subroutine0
+   \                     ??CrossCallReturnLabel_2:
+   \   00002E 26 ED        JRNE      L:??CrossCallReturnLabel_6
+     38            ws2812_send_8bit(led.b);
+   \   000030 7B 05        LD        A, (0x5,SP)
+   \   000032 CD ....      CALL      L:?Subroutine1
+   \                     ??CrossCallReturnLabel_7:
+   \   000035 B6 ..        LD        A, S:?b1
+   \   000037 A5 80        BCP       A, #0x80
+   \   000039 27 05        JREQ      L:??ws2812_send_rgb_4
+   \   00003B CD ....      CALL      L:ws2812_write_1
+   \   00003E 20 03        JRA       L:??ws2812_send_rgb_5
+   \                     ??ws2812_send_rgb_4:
+   \   000040 CD ....      CALL      L:ws2812_write_0
+   \                     ??ws2812_send_rgb_5:
+   \   000043 CD ....      CALL      L:?Subroutine0
+   \                     ??CrossCallReturnLabel_3:
+   \   000046 26 ED        JRNE      L:??CrossCallReturnLabel_7
+     39            return;
+   \   000048 81           RET
+     40          }
+     41          
+
+   \                                 In section .near_func.text, align 1
+     42          void ws2812_send(rgb888 *led, char num){
+   \                     ws2812_send:
+   \   000000 BF ..        LDW       S:?w2, X
+   \   000002 B7 ..        LD        S:?b3, A
+     43            for(char i=0;i<num;i++){
+   \   000004 27 18        JREQ      L:??ws2812_send_0
+     44              ws2812_send_rgb(*led++);
+   \                     ??ws2812_send_1:
+   \   000006 CD ....      CALL      L:?mov_w0_w2
+   \   000009 A6 03        LD        A, #0x3
+   \   00000B CD ....      CALL      L:?longfarg16_v_w0_a
+   \   00000E CD ....      CALL      L:ws2812_send_rgb
+   \   000011 5B 03        ADD       SP, #0x3
+   \   000013 BE ..        LDW       X, S:?w2
+   \   000015 1C 0003      ADDW      X, #0x3
+   \   000018 BF ..        LDW       S:?w2, X
+     45            }
+   \   00001A 3A ..        DEC       S:?b3
+   \   00001C 26 E8        JRNE      L:??ws2812_send_1
+     46            for(char i=0;i<200;i++){
+   \                     ??ws2812_send_0:
+   \   00001E A6 C8        LD        A, #0xc8
+     47              asm("nop");asm("nop");asm("nop");
+   \                     ??ws2812_send_2:
+   \   000020 9D           nop
+   \   000021 9D           nop
+   \   000022 9D           nop
+     48            }
+   \   000023 4A           DEC       A
+   \   000024 26 FA        JRNE      L:??ws2812_send_2
+     49          }
+   \   000026 81           RET
+     50          
+
+   \                                 In section .near_func.text, align 1
+     51          void ws2812_rainbow(char num){
+   \                     ws2812_rainbow:
+   \   000000 52 03        SUB       SP, #0x3
+     52            rgb888 test_led;
+     53            if(num < 85){
+   \   000002 A1 55        CP        A, #0x55
+   \   000004 24 0F        JRNC      L:??ws2812_rainbow_0
+     54              test_led.r = num*3;
+   \   000006 CD ....      CALL      L:?Subroutine2
+   \                     ??CrossCallReturnLabel_8:
+   \   000009 6B 02        LD        (0x2,SP), A
+     55              test_led.g = 255-num*3;
+   \   00000B A6 FF        LD        A, #0xff
+   \   00000D B0 ..        SUB       A, S:?b0
+   \   00000F 6B 01        LD        (0x1,SP), A
+     56              test_led.b = 0;
+   \   000011 0F 03        CLR       (0x3,SP)
+   \   000013 20 24        JRA       L:??ws2812_rainbow_1
+     57            }else if(num < 170){
+   \                     ??ws2812_rainbow_0:
+   \   000015 A1 AA        CP        A, #0xaa
+   \   000017 24 11        JRNC      L:??ws2812_rainbow_2
+     58              num = num - 85;
+   \   000019 AB AB        ADD       A, #0xab
+     59              test_led.r = 255-num*3;
+   \   00001B CD ....      CALL      L:?Subroutine2
+   \                     ??CrossCallReturnLabel_9:
+   \   00001E A6 FF        LD        A, #0xff
+   \   000020 B0 ..        SUB       A, S:?b0
+   \   000022 6B 02        LD        (0x2,SP), A
+     60              test_led.g = 0;
+   \   000024 0F 01        CLR       (0x1,SP)
+     61              test_led.b = num*3;
+   \   000026 B6 ..        LD        A, S:?b0
+   \   000028 20 0D        JRA       L:??ws2812_rainbow_3
+     62            }else{
+     63              num = num -170;
+   \                     ??ws2812_rainbow_2:
+   \   00002A AB 56        ADD       A, #0x56
+     64              test_led.r = 0;
+   \   00002C 0F 02        CLR       (0x2,SP)
+     65              test_led.g = num*3;
+   \   00002E CD ....      CALL      L:?Subroutine2
+   \                     ??CrossCallReturnLabel_10:
+   \   000031 6B 01        LD        (0x1,SP), A
+     66              test_led.b = 255-num*3;
+   \   000033 A6 FF        LD        A, #0xff
+   \   000035 B0 ..        SUB       A, S:?b0
+   \                     ??ws2812_rainbow_3:
+   \   000037 6B 03        LD        (0x3,SP), A
+     67            }
+     68            ws2812_send(&test_led,1);
+   \                     ??ws2812_rainbow_1:
+   \   000039 A6 01        LD        A, #0x1
+   \   00003B 96           LDW       X, SP
+   \   00003C 5C           INCW      X
+   \   00003D CD ....      CALL      L:ws2812_send
+     69          }
+   \   000040 5B 03        ADD       SP, #0x3
+   \   000042 81           RET
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine2:
+   \   000000 AE 0003      LDW       X, #0x3
+   \   000003 42           MUL       X, A
+   \   000004 41           EXG       A, XL
+   \   000005 B7 ..        LD        S:?b0, A
+   \   000007 81           RET
+     70          
+     71          
+
+   \                                 In section .near_func.text, align 1
+     72          void ws2812_test(){
+   \                     ws2812_test:
+   \   000000 52 03        SUB       SP, #0x3
+     73              rgb888 test_led;
+     74              test_led.r = 0xff;
+   \   000002 A6 FF        LD        A, #0xff
+   \   000004 6B 02        LD        (0x2,SP), A
+     75              test_led.g = 0xff;
+   \   000006 6B 01        LD        (0x1,SP), A
+     76              test_led.b = 0xff;
+   \   000008 6B 03        LD        (0x3,SP), A
+     77              ws2812_send(&test_led,1);
+   \   00000A A6 01        LD        A, #0x1
+   \   00000C 96           LDW       X, SP
+   \   00000D 5C           INCW      X
+   \   00000E CD ....      CALL      L:ws2812_send
+     78              return;
+   \   000011 5B 03        ADD       SP, #0x3
+   \   000013 81           RET
+     79          }
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       8  ?Subroutine0
+       7  ?Subroutine1
+       8  ?Subroutine2
+       1  _A_PA_ODR
+      67  ws2812_rainbow
+      39  ws2812_send
+      23  ws2812_send_8bit
+      73  ws2812_send_rgb
+      20  ws2812_test
+      27  ws2812_write_0
+      27  ws2812_write_1
+
+ 
+   1 byte  in section .near.noinit    (abs)
+ 299 bytes in section .near_func.text
+ 
+ 299 bytes of CODE memory
+   0 bytes of DATA memory (+ 1 byte shared)
+
+Errors: none
+Warnings: none

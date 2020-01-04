@@ -1,0 +1,567 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V3.10.1.201 for STM8                 04/Jan/2020  16:18:58
+# Copyright 2010-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+#
+#    Source file  =  F:\项目存档\2020-01-04 雪花灯STM8\iar\main.c
+#    Command line =  
+#        -f C:\Users\38263\AppData\Local\Temp\EWAAB3.tmp
+#        ("F:\项目存档\2020-01-04 雪花灯STM8\iar\main.c" -e -Oh --code_model
+#        small --data_model medium -o "F:\项目存档\2020-01-04
+#        雪花灯STM8\iar\Release\Obj" --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h" -D NDEBUG -lC
+#        "F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List" -lA
+#        "F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List" --vregs 16)
+#    Locale       =  Chinese (Simplified)_CHN.936
+#    List file    =  
+#        F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\List\main.lst
+#    Object file  =  F:\项目存档\2020-01-04 雪花灯STM8\iar\Release\Obj\main.o
+#
+###############################################################################
+
+F:\项目存档\2020-01-04 雪花灯STM8\iar\main.c
+      1          #include <iostm8s103f3.h>
+
+   \                                 In section .near.noinit, at 0x5000
+   \   union <unnamed> volatile _A_PA_ODR
+   \                     _A_PA_ODR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5002
+   \   union <unnamed> volatile _A_PA_DDR
+   \                     _A_PA_DDR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5003
+   \   union <unnamed> volatile _A_PA_CR1
+   \                     _A_PA_CR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5004
+   \   union <unnamed> volatile _A_PA_CR2
+   \                     _A_PA_CR2:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5005
+   \   union <unnamed> volatile _A_PB_ODR
+   \                     _A_PB_ODR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5007
+   \   union <unnamed> volatile _A_PB_DDR
+   \                     _A_PB_DDR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5008
+   \   union <unnamed> volatile _A_PB_CR1
+   \                     _A_PB_CR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5009
+   \   union <unnamed> volatile _A_PB_CR2
+   \                     _A_PB_CR2:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x500a
+   \   union <unnamed> volatile _A_PC_ODR
+   \                     _A_PC_ODR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x500c
+   \   union <unnamed> volatile _A_PC_DDR
+   \                     _A_PC_DDR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x500d
+   \   union <unnamed> volatile _A_PC_CR1
+   \                     _A_PC_CR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x500e
+   \   union <unnamed> volatile _A_PC_CR2
+   \                     _A_PC_CR2:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x500f
+   \   union <unnamed> volatile _A_PD_ODR
+   \                     _A_PD_ODR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5011
+   \   union <unnamed> volatile _A_PD_DDR
+   \                     _A_PD_DDR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5012
+   \   union <unnamed> volatile _A_PD_CR1
+   \                     _A_PD_CR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5013
+   \   union <unnamed> volatile _A_PD_CR2
+   \                     _A_PD_CR2:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x50c6
+   \   union <unnamed> volatile _A_CLK_CKDIVR
+   \                     _A_CLK_CKDIVR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x50e0
+   \   unsigned char volatile IWDG_KR
+   \                     IWDG_KR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x50e1
+   \   union <unnamed> volatile _A_IWDG_PR
+   \                     _A_IWDG_PR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x50e2
+   \   unsigned char volatile IWDG_RLR
+   \                     IWDG_RLR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5230
+   \   union <unnamed> volatile _A_UART1_SR
+   \                     _A_UART1_SR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5231
+   \   unsigned char volatile UART1_DR
+   \                     UART1_DR:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5232
+   \   unsigned char volatile UART1_BRR1
+   \                     UART1_BRR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5233
+   \   unsigned char volatile UART1_BRR2
+   \                     UART1_BRR2:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5234
+   \   union <unnamed> volatile _A_UART1_CR1
+   \                     _A_UART1_CR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5235
+   \   union <unnamed> volatile _A_UART1_CR2
+   \                     _A_UART1_CR2:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5236
+   \   union <unnamed> volatile _A_UART1_CR3
+   \                     _A_UART1_CR3:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5250
+   \   union <unnamed> volatile _A_TIM1_CR1
+   \                     _A_TIM1_CR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5254
+   \   union <unnamed> volatile _A_TIM1_IER
+   \                     _A_TIM1_IER:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5255
+   \   union <unnamed> volatile _A_TIM1_SR1
+   \                     _A_TIM1_SR1:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5260
+   \   unsigned char volatile TIM1_PSCRH
+   \                     TIM1_PSCRH:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5261
+   \   unsigned char volatile TIM1_PSCRL
+   \                     TIM1_PSCRL:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5262
+   \   unsigned char volatile TIM1_ARRH
+   \                     TIM1_ARRH:
+   \   000000              DS8 1
+
+   \                                 In section .near.noinit, at 0x5263
+   \   unsigned char volatile TIM1_ARRL
+   \                     TIM1_ARRL:
+   \   000000              DS8 1
+      2          #include "ws2812.h"
+      3          #include "beep.h"
+      4          
+      5          #define        uint         unsigned    int
+      6          #define        uchar        unsigned    char
+      7          #define        ulong        unsigned    long
+      8          
+
+   \                                 In section .near_func.text, align 1
+      9          void  delay_ms(uchar  ms)
+     10          {
+   \                     delay_ms:
+   \   000000 20 01        JRA       L:??delay_ms_0
+     11              uchar  i,j;
+     12              while(ms--)
+   \                     ??delay_ms_1:
+   \   000002 4A           DEC       A
+     13              {
+     14                  for(i=4;i!=0;i--)
+     15                    for(j=100;j!=0;j--);
+   \                     ??delay_ms_0:
+   \   000003 4D           TNZ       A
+   \   000004 26 FC        JRNE      L:??delay_ms_1
+     16              }
+     17          }
+   \   000006 81           RET
+     18          
+
+   \                                 In section .near_func.text, align 1
+     19          void  gpio_init(void)
+     20          {
+     21              PA_DDR = 0<<1|0<<2|1<<3|0<<4|0<<5|0<<6;
+   \                     gpio_init:
+   \   000000 35 08 5002   MOV       L:0x5002, #0x8
+     22              PA_CR1 = 0<<1|0<<2|1<<3|0<<4|0<<5|0<<6;
+   \   000004 35 08 5003   MOV       L:0x5003, #0x8
+     23              PA_CR2 = 0<<1|0<<2|1<<3|0<<4|0<<5|0<<6;
+   \   000008 35 08 5004   MOV       L:0x5004, #0x8
+     24              PA_ODR = 0<<1|0<<2|0<<3|0<<4|0<<5|0<<6;
+   \   00000C 725F 5000    CLR       L:0x5000
+     25          
+     26              PB_DDR = 0<<0|0<<1|0<<2|0<<3|0<<4|1<<5|0<<6|0<<7;
+   \   000010 35 20 5007   MOV       L:0x5007, #0x20
+     27              PB_CR1 = 0<<0|0<<1|0<<2|0<<3|0<<4|1<<5|0<<6|0<<7;
+   \   000014 35 20 5008   MOV       L:0x5008, #0x20
+     28              PB_CR2 = 0<<0|0<<1|0<<2|0<<3|0<<4|0<<5|0<<6|0<<7;
+   \   000018 725F 5009    CLR       L:0x5009
+     29              PB_ODR = 0<<0|0<<1|0<<2|0<<3|0<<4|0<<5|0<<6|0<<7;
+   \   00001C 725F 5005    CLR       L:0x5005
+     30          
+     31              PC_DDR = 0<<1|0<<2|0<<3|1<<4|1<<5|1<<6|0<<7;
+   \   000020 35 70 500C   MOV       L:0x500c, #0x70
+     32              PC_CR1 = 0<<1|0<<2|1<<3|1<<4|1<<5|1<<6|0<<7;
+   \   000024 35 78 500D   MOV       L:0x500d, #0x78
+     33              PC_CR2 = 0<<1|0<<2|0<<3|0<<4|0<<5|0<<6|0<<7;
+   \   000028 725F 500E    CLR       L:0x500e
+     34              PC_ODR = 0<<1|0<<2|0<<3|0<<4|0<<5|0<<6|0<<7;
+   \   00002C 725F 500A    CLR       L:0x500a
+     35          
+     36              PD_DDR = 0<<0|0<<1|1<<2|1<<3|1<<4|0<<5|0<<6|0<<7;
+   \   000030 35 1C 5011   MOV       L:0x5011, #0x1c
+     37              PD_CR1 = 0<<0|0<<1|1<<2|1<<3|1<<4|0<<5|0<<6|0<<7;
+   \   000034 35 1C 5012   MOV       L:0x5012, #0x1c
+     38              PD_CR2 = 0<<0|0<<1|0<<2|0<<3|1<<4|0<<5|0<<6|0<<7;
+   \   000038 35 10 5013   MOV       L:0x5013, #0x10
+     39              PD_ODR = 0<<0|0<<1|0<<2|0<<3|0<<4|0<<5|0<<6|0<<7;
+   \   00003C 725F 500F    CLR       L:0x500f
+     40          }
+   \   000040 81           RET
+   \   000041              REQUIRE _A_PA_DDR
+   \   000041              REQUIRE _A_PA_CR1
+   \   000041              REQUIRE _A_PA_CR2
+   \   000041              REQUIRE _A_PA_ODR
+   \   000041              REQUIRE _A_PB_DDR
+   \   000041              REQUIRE _A_PB_CR1
+   \   000041              REQUIRE _A_PB_CR2
+   \   000041              REQUIRE _A_PB_ODR
+   \   000041              REQUIRE _A_PC_DDR
+   \   000041              REQUIRE _A_PC_CR1
+   \   000041              REQUIRE _A_PC_CR2
+   \   000041              REQUIRE _A_PC_ODR
+   \   000041              REQUIRE _A_PD_DDR
+   \   000041              REQUIRE _A_PD_CR1
+   \   000041              REQUIRE _A_PD_CR2
+   \   000041              REQUIRE _A_PD_ODR
+     41          
+
+   \                                 In section .near_func.text, align 1
+     42          void  WDT_Init(void)
+     43          {
+     44              IWDG_KR = 0xCC;       //启动看门狗
+   \                     WDT_Init:
+   \   000000 CD ....      CALL      L:?Subroutine1
+     45              IWDG_KR = 0x55;       //解除写保护
+     46              IWDG_PR = 0x06;       //256分频，最高1.02秒
+     47              IWDG_RLR = 125;       //500ms
+     48              IWDG_KR = 0xAA;       //写保护
+     49          }
+   \                     ??CrossCallReturnLabel_2:
+   \   000003 81           RET
+   \   000004              REQUIRE IWDG_KR
+   \   000004              REQUIRE _A_IWDG_PR
+   \   000004              REQUIRE IWDG_RLR
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine1:
+   \   000000 35 CC 50E0   MOV       L:0x50e0, #0xcc
+   \   000004 35 55 50E0   MOV       L:0x50e0, #0x55
+   \   000008 35 06 50E1   MOV       L:0x50e1, #0x6
+   \   00000C 35 7D 50E2   MOV       L:0x50e2, #0x7d
+   \   000010 35 AA 50E0   MOV       L:0x50e0, #0xaa
+   \   000014 81           RET
+     50          
+
+   \                                 In section .near_func.text, align 1
+     51          void  WDT(void)
+     52          {
+     53              IWDG_KR = 0xAA;       //喂狗指令WDT();
+   \                     WDT:
+   \   000000 35 AA 50E0   MOV       L:0x50e0, #0xaa
+     54          }
+   \   000004 81           RET
+   \   000005              REQUIRE IWDG_KR
+     55          
+
+   \                                 In section .near_func.text, align 1
+     56          void  Fosc_Init(void)
+     57          {
+     58              CLK_CKDIVR_HSIDIV = 0;    //1分频
+   \                     Fosc_Init:
+   \   000000 CD ....      CALL      L:?Subroutine2
+     59          }
+   \                     ??CrossCallReturnLabel_4:
+   \   000003 81           RET
+   \   000004              REQUIRE _A_CLK_CKDIVR
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine2:
+   \   000000 C6 50C6      LD        A, L:0x50c6
+   \   000003 A4 E7        AND       A, #0xe7
+   \   000005 C7 50C6      LD        L:0x50c6, A
+   \   000008 81           RET
+     60          
+
+   \                                 In section .near_func.text, align 1
+     61          void  uart1_init(void)
+     62          {
+     63              UART1_CR1=0x00;
+   \                     uart1_init:
+   \   000000 725F 5234    CLR       L:0x5234
+     64              UART1_CR2=0x00;
+   \   000004 725F 5235    CLR       L:0x5235
+     65              UART1_CR3=0x00;
+   \   000008 725F 5236    CLR       L:0x5236
+     66              UART1_BRR2 = 0x0B;
+   \   00000C 35 0B 5233   MOV       L:0x5233, #0xb
+     67              UART1_BRR1 = 0x08;     //115200波特率
+   \   000010 35 08 5232   MOV       L:0x5232, #0x8
+     68              UART1_CR2_TEN = 1;     //允许发送
+   \   000014 7216 5235    BSET      L:0x5235, #0x3
+     69              UART1_CR2_REN = 1;     //允许接收
+   \   000018 7214 5235    BSET      L:0x5235, #0x2
+     70              UART1_CR2_RIEN = 1;    //接收中断使能
+   \   00001C 721A 5235    BSET      L:0x5235, #0x5
+     71          }
+   \   000020 81           RET
+   \   000021              REQUIRE _A_UART1_CR1
+   \   000021              REQUIRE _A_UART1_CR2
+   \   000021              REQUIRE _A_UART1_CR3
+   \   000021              REQUIRE UART1_BRR2
+   \   000021              REQUIRE UART1_BRR1
+     72          
+
+   \                                 In section .near_func.text, align 1
+     73          void  uart1_send(uchar dat)
+     74          {
+     75              while((UART1_SR & 0x80)==0x00);
+   \                     uart1_send:
+   \                     ??uart1_send_0:
+   \   000000 720F 5230 FB BTJF      L:0x5230, #0x7, L:??uart1_send_0
+     76              UART1_DR = dat;
+   \   000005 C7 5231      LD        L:0x5231, A
+     77          }
+   \   000008 81           RET
+   \   000009              REQUIRE _A_UART1_SR
+   \   000009              REQUIRE UART1_DR
+     78          
+
+   \                                 In section .near_func.text, align 1
+     79          void  timer_Init(void)
+     80          {
+     81              TIM1_PSCRH = 0;
+   \                     timer_Init:
+   \   000000 CD ....      CALL      L:?Subroutine0
+     82              TIM1_PSCRL = 15;          //(15+1)分频为1M
+     83              TIM1_ARRH = 0x27;
+     84              TIM1_ARRL = 0x10;        //每10000us中断一次
+     85              TIM1_IER = 0x01;         //允许更新中断
+     86              TIM1_CR1 = 0x01;         //计数器使能，开始计数
+     87          
+     88          }
+   \                     ??CrossCallReturnLabel_0:
+   \   000003 81           RET
+   \   000004              REQUIRE TIM1_PSCRH
+   \   000004              REQUIRE TIM1_PSCRL
+   \   000004              REQUIRE TIM1_ARRH
+   \   000004              REQUIRE TIM1_ARRL
+   \   000004              REQUIRE _A_TIM1_IER
+   \   000004              REQUIRE _A_TIM1_CR1
+
+   \                                 In section .near_func.text, align 1
+   \                     ?Subroutine0:
+   \   000000 725F 5260    CLR       L:0x5260
+   \   000004 35 0F 5261   MOV       L:0x5261, #0xf
+   \   000008 35 27 5262   MOV       L:0x5262, #0x27
+   \   00000C 35 10 5263   MOV       L:0x5263, #0x10
+   \   000010 35 01 5254   MOV       L:0x5254, #0x1
+   \   000014 35 01 5250   MOV       L:0x5250, #0x1
+   \   000018 81           RET
+     89          
+
+   \                                 In section .near_func.text, align 1
+     90          void  main(void)
+     91          {
+     92              asm("sim");    //关总中断
+   \                     main:
+   \   000000 9B           sim
+     93              gpio_init();
+   \   000001 CD ....      CALL      L:gpio_init
+     94              uart1_init();
+   \   000004 CD ....      CALL      L:uart1_init
+     95              timer_Init();
+   \   000007 CD ....      CALL      L:?Subroutine0
+     96              WDT_Init();
+   \                     ??CrossCallReturnLabel_1:
+   \   00000A CD ....      CALL      L:?Subroutine1
+     97              Fosc_Init();
+   \                     ??CrossCallReturnLabel_3:
+   \   00000D CD ....      CALL      L:?Subroutine2
+     98              asm("rim");    //开总中断
+   \                     ??CrossCallReturnLabel_5:
+   \   000010 9A           rim
+     99              
+    100              ws2812_test();
+   \   000011 CD ....      CALL      L:ws2812_test
+    101              beep_init();
+   \   000014 CD ....      CALL      L:beep_init
+    102              beep_demo();
+   \   000017 CD ....      CALL      L:beep_demo
+    103              while(1)
+    104              {
+    105                  asm("nop");
+   \                     ??main_0:
+   \   00001A 9D           nop
+    106                  asm("wfi");//等待中断
+   \   00001B 8F           wfi
+   \   00001C 20 FC        JRA       L:??main_0
+   \   00001E              REQUIRE _A_CLK_CKDIVR
+   \   00001E              REQUIRE IWDG_KR
+   \   00001E              REQUIRE _A_IWDG_PR
+   \   00001E              REQUIRE IWDG_RLR
+   \   00001E              REQUIRE TIM1_PSCRH
+   \   00001E              REQUIRE TIM1_PSCRL
+   \   00001E              REQUIRE TIM1_ARRH
+   \   00001E              REQUIRE TIM1_ARRL
+   \   00001E              REQUIRE _A_TIM1_IER
+   \   00001E              REQUIRE _A_TIM1_CR1
+    107              }
+    108          }
+    109          
+    110          #pragma   vector = UART1_R_RXNE_vector
+
+   \                                 In section .near_func.text, align 1
+    111          __interrupt void uart1rxd(void)
+    112          {
+    113              //data = UART1_DR;
+    114          }
+   \                     uart1rxd:
+   \                     _interrupt_20:
+   \   000000 80           IRET
+    115          
+    116          #pragma   vector = TIM1_OVR_UIF_vector
+
+   \                                 In section .near_func.text, align 1
+    117          __interrupt void TIM1_OVR_UIF(void)
+    118          {
+   \                     TIM1_OVR_UIF:
+   \                     _interrupt_13:
+   \   000000 8A           PUSH      CC
+   \   000001 84           POP       A
+   \   000002 A4 BF        AND       A, #0xbf
+   \   000004 88           PUSH      A
+   \   000005 86           POP       CC
+   \   000006 CD ....      CALL      L:?push_l0
+   \   000009 CD ....      CALL      L:?push_l1
+    119              TIM1_SR1_UIF = 0;
+   \   00000C 7211 5255    BRES      L:0x5255, #0x0
+    120              WDT();
+   \   000010 35 AA 50E0   MOV       L:0x50e0, #0xaa
+    121              beep_update();
+   \   000014 CD ....      CALL      L:beep_update
+    122              //add your code here
+    123          }
+   \   000017 CD ....      CALL      L:?pop_l1
+   \   00001A CD ....      CALL      L:?pop_l0
+   \   00001D 80           IRET
+   \   00001E              REQUIRE _A_TIM1_SR1
+   \   00001E              REQUIRE IWDG_KR
+    124          
+    125          
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      25  ?Subroutine0
+      21  ?Subroutine1
+       9  ?Subroutine2
+       4  Fosc_Init
+       1  IWDG_KR
+       1  IWDG_RLR
+       1  TIM1_ARRH
+       1  TIM1_ARRL
+      30  TIM1_OVR_UIF
+       1  TIM1_PSCRH
+       1  TIM1_PSCRL
+       1  UART1_BRR1
+       1  UART1_BRR2
+       1  UART1_DR
+       5  WDT
+       4  WDT_Init
+       1  _A_CLK_CKDIVR
+       1  _A_IWDG_PR
+       1  _A_PA_CR1
+       1  _A_PA_CR2
+       1  _A_PA_DDR
+       1  _A_PA_ODR
+       1  _A_PB_CR1
+       1  _A_PB_CR2
+       1  _A_PB_DDR
+       1  _A_PB_ODR
+       1  _A_PC_CR1
+       1  _A_PC_CR2
+       1  _A_PC_DDR
+       1  _A_PC_ODR
+       1  _A_PD_CR1
+       1  _A_PD_CR2
+       1  _A_PD_DDR
+       1  _A_PD_ODR
+       1  _A_TIM1_CR1
+       1  _A_TIM1_IER
+       1  _A_TIM1_SR1
+       1  _A_UART1_CR1
+       1  _A_UART1_CR2
+       1  _A_UART1_CR3
+       1  _A_UART1_SR
+       7  delay_ms
+      65  gpio_init
+      30  main
+       4  timer_Init
+      33  uart1_init
+       9  uart1_send
+       1  uart1rxd
+
+ 
+  34 bytes in section .near.noinit    (abs)
+ 247 bytes in section .near_func.text
+ 
+ 247 bytes of CODE memory
+   0 bytes of DATA memory (+ 34 bytes shared)
+
+Errors: none
+Warnings: none
